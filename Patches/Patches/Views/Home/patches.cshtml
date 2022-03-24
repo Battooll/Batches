@@ -1,0 +1,183 @@
+﻿@model IEnumerable<OfficehHierarchyViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+
+<div class="card-deck">
+    <h1 class="display-4">AU For Medical Science</h1>
+    <p>
+        Patches
+    </p>
+    <div>
+        <div class="input-group">
+            -->
+            @*<form action="https://google.com">
+                <input type="submit" value="Add New Patch" />
+            </form>*@
+            <center>
+                <input type="button" class="btn btn-group" value="إضافة جديد"
+                       onclick="window.location.href='@Url.Action("AddPatch", "Home" )'" />
+
+                @*<input type="button" value="بحث"
+                onclick="window.location.href='@Url.Action("PatchDetails", "Home" )'" />*@
+            </center>
+
+        </div>
+
+        <!--<form method="get">
+    @*<input class="form-control" asp-for="" />*@
+    <!--<div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+
+        </div>
+    </form>-->
+        @*//new with searvh*@
+
+        <div style="font-family:Arial">
+            <h2>Patches List</h2>
+            <center>
+                <p>
+                    @using (@Html.BeginForm("Index1", "Home", FormMethod.Get))
+                    {
+                        <b>Search By:</b>
+                        @Html.RadioButton("searchBy", "Building", true)<text>Building</text>
+                        @Html.RadioButton("searchBy", "Patch")<text>Patch</text><br />
+                        @Html.TextBox("search")<input type="submit" class="btn btn-primary" value="search" />
+
+                    }
+                </p>
+            </center>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.patch.PatchNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.patch.PatchSlot)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.patch.BoxNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.patch.Office.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.patch.Office.OfficeNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dept.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.floor.FloorNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.building.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.patch.Notes)
+                    </th>
+                    <th>Action</th>
+                </tr>
+                @if (Model.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="4">
+                            No records match search criteria
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patch.PatchNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patch.PatchSlot)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patch.BoxNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patch.Office.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patch.Office.OfficeNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dept.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.floor.FloorNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.building.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patch.Notes)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.patch.Idpatches }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.patch.Idpatches }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.patch.Idpatches })
+                </td>
+            </tr>
+                    }
+                }
+            </table>
+        </div>
+
+        @*//*@
+
+
+
+
+
+
+        @*//old*@
+        @if (Model == null)
+        {
+            <p><em>Not Found...</em></p>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>رقم الباتش</th>
+                        <th>منفذ باتش</th>
+                        <th>رقم البوكس</th>
+                        <th>اسم المكتب</th>
+                        <th>رقم المكتب</th>
+                        <th>القسم</th>
+                        <th>المنسوب</th>
+                        <th>المبنى</th>
+                        <th>ملاحظات</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.patch.Idpatches</td>
+                            <td>@item.patch.PatchSlot</td>
+                            <td>@item.patch.BoxNo</td>
+                            <td>@item.patch.Office.Name</td>
+                            <td>@item.patch.Office.Idoffice</td>
+                            <td>@item.dept.Name</td>
+                            <td>@item.floor.Idfloors</td>
+                            <td>@item.building.Name</td>
+                            <td>@item.patch.Notes</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>

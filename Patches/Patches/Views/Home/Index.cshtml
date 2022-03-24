@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div class="form-group">
+    <center>
+        <h1 class="display-4">AU For Medical Science</h1>
+        @*<p>
+        Patches
+            </p>*@
+
+        @*<form action="https://google.com">
+            <input type="submit" value="Add New Patch" />
+        </form>*@
+        <div>
+            <input type="button" class="btn btn-primary btn-block" value="Patches"
+                   onclick="window.location.href='@Url.Action("Index1", "Home" )'" />
+        </div>
+        <h3>
+        </h3>
+        <div>
+            <input type="button" class="btn btn-primary btn-block" value="Desktop and Priter"
+                   onclick="window.location.href='@Url.Action("Index", "Desktop" )'" />
+        </div>
+        <h3>
+        </h3>
+        <div>
+
+        </div>
+        <div>
+            <input type="button" class="btn btn-primary btn-block" value="Patches In Building"
+                   onclick="window.location.href='@Url.Action("patchInBuilding", "Home" )'" />
+        </div>
+        <h3>
+        </h3>
+        <div>
+
+        </div>
+        <div>
+            <input type="button" class="btn btn-primary btn-block" value="Patches In Dept"
+                   onclick="window.location.href='@Url.Action("patchInDept", "Home" )'" />
+        </div>
+        <h3>
+        </h3>
+        <div>
+            <input type="button" class="btn btn-primary btn-block" value="Patches In Floor"
+                   onclick="window.location.href='@Url.Action("patchInFloor", "Home" )'" />
+        </div>
+        <h3>
+        </h3>
+        <div>
+            <input type="button" class="btn btn-primary btn-block" value="Patches In Office"
+                   onclick="window.location.href='@Url.Action("patchInOffice", "Home" )'" />
+        </div>
+    </center>
+
+</div>

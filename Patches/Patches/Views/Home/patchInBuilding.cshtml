@@ -1,0 +1,66 @@
+﻿@model IEnumerable<OfficehHierarchyViewModel>
+@{
+    ViewBag.Title = "Paches in Building";
+}
+
+
+
+
+<div class="card-deck">
+    <h1 class="display-4">AU For Medical Science</h1>
+    <p>
+        Paches in Building
+    </p>
+    <!--<div>-->
+        @*<form action="https://google.com">
+                <input type="submit" value="Add New Patch" />
+            </form>*@
+        <!--<center>
+            <input type="button" value="إضافة جديد"
+                   onclick="window.location.href='@Url.Action("AddPatch", "Home" )'" />
+
+            <input type="button" value="بحث"
+                   onclick="window.location.href='@Url.Action("PatchDetails", "Home" )'" />
+        </center>
+
+    </div>-->
+    @if (Model == null)
+    {
+        <p><em>Not Found...</em></p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>رقم الباتش</th>
+                    <th>منفذ باتش</th>
+                    <th>رقم البوكس</th>
+                    <th>اسم المكتب</th>
+                    <th>رقم المكتب</th>
+                    <th>القسم</th>
+                    <th>المنسوب</th>
+                    <th>المبنى</th>
+                    <th>ملاحظات</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.patch.Idpatches</td>
+                        <td>@item.patch.PatchSlot</td>
+                        <td>@item.patch.BoxNo</td>
+                        <td>@item.patch.Office.Name</td>
+                        <td>@item.patch.Office.Idoffice</td>
+                        <td>@item.dept.Name</td>
+                        <td>@item.floor.Idfloors</td>
+                        <td>@item.building.Name</td>
+                        <td>@item.patch.Notes</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

@@ -1,0 +1,62 @@
+﻿@model DesktopViewModel
+<h4>Desktop Details</h4>
+<hr />
+<center>
+    <div class="row">
+        <div class="col-md-6">
+            @if (Model == null)
+            {
+                <p><em>Nothing Found...</em></p>
+            }
+            else
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>DeviceName</th>
+                            <th>User</th>
+                            <th>EM</th>
+                            <th>Department</th>
+                            <th>IP</th>
+                            <th>DC</th>
+                            <th>AV</th>
+                            <th>EX</th>
+                            <th>Office</th>
+                            <th>Floor</th>
+                            <th>Building</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.desktop.IddesktopPribter</td>
+                            <td>@Model.desktop.Ds.Name</td>
+                            <td>@Model.desktop.User</td>
+                            <td>@Model.desktop.Em</td>
+                            <td>@Model.OfficehHierarchy.dept.Name</td>
+                            <td>@Model.desktop.Ip</td>
+                            <td>@Model.desktop.Dc</td>
+                            <td>@Model.desktop.Av</td>
+                            <td>@Model.desktop.Ex</td>
+                            <td>@Model.desktop.Office.Name</td>
+                            <td>@Model.OfficehHierarchy.floor.FloorNo</td>
+                            <td>@Model.OfficehHierarchy.building.Name</td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            }
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

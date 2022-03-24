@@ -1,0 +1,91 @@
+﻿@model DesktopPribter
+
+<script type="text/javascript" src="js/script.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+@{
+    ViewBag.Title = "Edit Desktop";
+}
+
+<h4>Edit Desktop</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="EditDesktop">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IddesktopPribter" />
+            <div class="form-group">
+                <label asp-for="DsId" class="control-label"></label>
+                <input asp-for="DsId" class="form-control" />
+                <span asp-validation-for="DsId" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="User" class="control-label"></label>
+                    <input asp-for="User" class="form-control" />
+                    <span asp-validation-for="User" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Em" class="control-label"></label>
+                    <input asp-for="Em" class="form-control" />
+                    <span asp-validation-for="Em" class="text-danger"></span>
+                </div>
+                @*<div class="form-group col-md-6">
+                    <label asp-for="OfficehHierarchy.dept.Name" class="control-label"></label>
+                    <input asp-for="OfficehHierarchy.dept.Name" class="form-control" />
+                    <span asp-validation-for="OfficehHierarchy.dept.Name" class="text-danger"></span>
+                </div>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="Ip" class="control-label"></label>
+                <input asp-for="Ip" class="form-control" />
+                <span asp-validation-for="Ip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dc" class="control-label"></label>
+                <input asp-for="Dc" class="form-control" />
+                <span asp-validation-for="Dc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Av" class="control-label"></label>
+                <input asp-for="Av" class="form-control" />
+                <span asp-validation-for="Av" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ex" class="control-label"></label>
+                <input asp-for="Ex" class="form-control" />
+                <span asp-validation-for="Ex" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="desktop.Office.Name" class="control-label"></label>
+                <input asp-for="desktop.Office.Name" class="form-control" />
+                <span asp-validation-for="desktop.Office.Name" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="OfficeId" class="control-label"></label>
+                <input asp-for="OfficeId" class="form-control" />
+                <span asp-validation-for="OfficeId" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="OfficehHierarchy.building.Name" class="control-label"></label>
+                <input asp-for="OfficehHierarchy.building.Name" class="form-control" />
+                <span asp-validation-for="OfficehHierarchy.building.Name" class="text-danger"></span>
+            </div>*@
+            <h3></h3>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                    @*<a asp-action="EditPatch" class="btn btn-primary btn-block"><i class="fa fa-table"></i> Submit </a>*@
+                    <a asp-action="AddDesktop" class="btn btn-primary btn-block"><i class="fa fa-table"></i> add new </a>
+                </div>
+                <h3></h3>
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@  

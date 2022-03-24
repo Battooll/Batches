@@ -1,0 +1,101 @@
+﻿@model IEnumerable<DesktopViewModel>
+@{
+    ViewBag.Title = "AU Desktop and Pribter";
+}
+
+
+
+
+<div class="card-deck">
+    <h1 class="display-4">AU For Medical Science</h1>
+    <p>
+        AU Desktop and Pribter
+    </p>
+    <center>
+        <p>
+            @using (@Html.BeginForm("Index", "Desktop", FormMethod.Get))
+            {
+                <b>Search By:</b>
+                @Html.RadioButton("searchBy", "Device Name", true)<text>Device Name</text>
+                @Html.RadioButton("searchBy", "IP")<text>IP</text><br />
+                @Html.RadioButton("searchBy", "User")<text>User</text><br />
+                @Html.RadioButton("searchBy", "Em")<text>EM</text><br />
+                @Html.TextBox("search")<h3></h3><input type="submit" class="btn btn-primary" value="search" />
+
+            }
+        </p>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <a asp-action="AddDesktop" class="btn btn-primary btn-block"><i class="fa fa-table"></i> add new </a>
+            </div>
+        </div>
+    </center>
+    <h2>
+    </h2>
+    <h2></h2>
+    @if (Model == null)
+    {
+        <p><em>Not Found...</em></p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@*@Html.DisplayNameFor(model => model.desktop.IddesktopPribter)*@<text>NO</text></th>
+                    <th>@*@Html.DisplayNameFor(model => model.ds.Name)*@<text>Device Name</text></th>
+                    <th>@*@Html.DisplayNameFor(model => model.desktop.User)*@<text>User</text></th>
+                    <th>@*@Html.DisplayNameFor(model => model.desktop.Em)*@<text>EM</text></th>
+                    <th>@*@Html.DisplayNameFor(model => model.OfficehHierarchy.dept.Name)*@<text>Department</text></th>
+                    <th>@*@Html.DisplayNameFor(model => model.desktop.Ip)*@<text>IP</text></th>
+                    <th>@*@Html.DisplayNameFor(model => model.desktop.Dc)*@<text>DC</text></th>
+                    <th>@*@Html.DisplayNameFor(model => model.desktop.Av)*@<text>AV</text></th>
+                    <th>@*@Html.DisplayNameFor(model => model.desktop.Ex)*@<text>EX</text></th>
+                    <th>@*@Html.DisplayNameFor(model => model.desktop.Office.Name)*@<text>Office</text></th>
+                    <th>@*@Html.DisplayNameFor(model => model.OfficehHierarchy.floor.Idfloors)*@<text>Floor</text></th>
+                    <th>@*@Html.DisplayNameFor(model => model.OfficehHierarchy.building.Name)*@<text>Building</text></th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td colspan="4">
+                        No records match search criteria
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.desktop.IddesktopPribter)</td>
+                            <td>@Html.DisplayFor(modelItem => item.desktop.Ds.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.desktop.User)</td>
+                            <td>@Html.DisplayFor(modelItem => item.desktop.Em)</td>
+                            <td>@Html.DisplayFor(modelItem => item.OfficehHierarchy.dept.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.desktop.Ip)</td>
+                            <td>@Html.DisplayFor(modelItem => item.desktop.Dc)</td>
+                            <td>@Html.DisplayFor(modelItem => item.desktop.Av)</td>
+                            <td>@Html.DisplayFor(modelItem => item.desktop.Ex)</td>
+                            <td>@Html.DisplayFor(modelItem => item.desktop.Office.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.OfficehHierarchy.floor.FloorNo)</td>
+                            <td>@Html.DisplayFor(modelItem => item.OfficehHierarchy.building.Name)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "EditDesktop", new { id = item.desktop.IddesktopPribter }) |
+                                @Html.ActionLink("Details", "desktopDetails", new { id = item.desktop.IddesktopPribter }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.desktop.IddesktopPribter })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+}
+        </table>
+    }
+</div>
+@section Scripts
+        {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }}

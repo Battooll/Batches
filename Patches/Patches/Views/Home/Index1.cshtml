@@ -1,0 +1,128 @@
+﻿@model IEnumerable<OfficehHierarchyViewModel>
+
+    @{
+        ViewBag.Title = "Home Page";
+    }
+    <div style="font-family:Arial">
+        <h2>Patches List</h2>
+        <center>
+            <p>
+                @using (@Html.BeginForm("Index1", "Home", FormMethod.Get))
+                {
+                    <b>Search By:</b>
+                    @Html.RadioButton("searchBy", "Building", true)<text>Building</text>
+                    @Html.RadioButton("searchBy", "Patch")<text>Patch</text><br />
+                    @Html.RadioButton("searchBy", "Floor")<text>Floor</text><br />
+                    @Html.RadioButton("searchBy", "Office")<text>Office</text><br />
+                    @Html.RadioButton("searchBy", "Dept")<text>Dept</text><br />
+                    @Html.TextBox("search")<h3></h3><input type="submit" class="btn btn-primary" value="search" />
+
+                }
+            </p>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <a asp-action="AddPatch" class="btn btn-primary btn-block"><i class="fa fa-table"></i> add new </a>
+                </div>
+            </div>
+            
+        </center>
+        <h2></h2>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.patch.PatchNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.patch.PatchSlot)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.patch.BoxNo)
+                </th>
+                <th>
+                    Office Name
+                    @*@Html.DisplayNameFor(model => model.patch.Office.Name)*@
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.patch.Office.OfficeNo)
+                </th>
+                <th>
+                    Dept Name
+                    @*@Html.DisplayNameFor(model => model.dept.Name)*@
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.floor.FloorNo)
+                </th>
+                <th>
+                    Building Name
+                    @*@Html.DisplayNameFor(model => model.building.Name)*@
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.patch.Notes)
+                </th>
+                <th>Action</th>
+            </tr>
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td colspan="4">
+                        No records match search criteria
+                    </td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in Model)
+                {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.patch.PatchNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.patch.PatchSlot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.patch.BoxNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.patch.Office.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.patch.Office.OfficeNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dept.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.floor.FloorNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.building.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.patch.Notes)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditPatch", new { id = item.patch.Idpatches }) |
+                @Html.ActionLink("Details", "PatchDetails", new { id = item.patch.Idpatches }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.patch.Idpatches })
+            </td>
+        </tr>
+                }
+            }
+        </table>
+    </div>
+
+    @*//تجريب*@
+
+    @section Scripts
+        {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+        @*<link rel="stylesheet" href="https://cdn.jsdeliver.net/npm/select2@4.0.13/dist/css/select2.min.css" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdeliver.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("addPatches").select2();
+            });
+        </script>*@
+      }
